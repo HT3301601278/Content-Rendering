@@ -94,7 +94,7 @@ AI对话界面提供:
 
 1. 克隆项目代码
 ```
-git clone https://github.com/HT3301601278/content-rendering.git
+git clone https://github.com/HT3301601278/Content-Rendering.git
 cd content-rendering
 ```
 
