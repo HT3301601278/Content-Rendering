@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <nav class="nav-menu">
+      <router-link to="/" class="nav-link">内容渲染</router-link>
+      <router-link to="/chat" class="nav-link">AI对话</router-link>
     </nav>
     <router-view/>
   </div>
@@ -13,20 +13,33 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-nav a {
+.nav-link {
+  margin: 0 15px;
+  padding: 8px 16px;
+  color: #2c3e50;
+  text-decoration: none;
+  border-radius: 4px;
   font-weight: bold;
-  color: #2c3e50;
+  transition: all 0.3s ease;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.nav-link:hover {
+  background-color: #e3f2fd;
+}
+
+.router-link-active {
+  background-color: #2196f3;
+  color: white;
 }
 </style>

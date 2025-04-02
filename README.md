@@ -1,19 +1,152 @@
-# content-rendering
+# Content-Rendering 内容渲染系统
 
-## Project setup
+## 项目概述
+
+Content-Rendering是一个基于Vue.js开发的高性能内容渲染系统，专门设计用于呈现复杂结构化内容，包括数学公式、Markdown格式文本等。系统支持多种文档格式的实时渲染，并提供AI辅助对话功能，为用户提供全方位的内容展示与交互体验。
+
+## 核心功能
+
+### 1. 多格式内容渲染
+
+- **Markdown渲染**：支持完整的Markdown语法，包括标题、列表、表格、代码块等
+- **LaTeX公式渲染**：支持多种LaTeX公式格式（$...$、$$...$$、\(...\)、\[...\]）
+- **自定义环境支持**：支持定理(theorem)、证明(proof)、定义(definition)等数学环境
+- **丰富样式**：为不同类型的内容提供美观的预设样式
+
+### 2. AI智能对话
+
+- **流式响应**：支持AI回复的流式输出，提供实时反馈
+- **思考过程显示**：可展示AI的推理过程，增强透明度
+- **LaTeX公式支持**：在对话中支持数学公式的输入与渲染
+- **上下文记忆**：保持对话上下文，支持连续对话
+
+### 3. 内容管理
+
+- **文档选择器**：提供直观的下拉菜单选择不同内容文件
+- **多类型文档**：预设多种内容类型，包括科学、语言等主题
+- **统一格式**：使用JSON格式统一管理所有内容文件
+
+## 技术架构
+
+### 前端框架
+
+- **Vue.js**：核心框架，提供响应式数据绑定和组件化开发
+- **Vue Router**：页面路由管理，实现单页应用导航
+- **Vuex**：状态管理，用于管理应用全局状态
+
+### 内容渲染
+
+- **markdown-it**：高性能Markdown解析与渲染引擎
+- **KaTeX**：高性能数学公式排版库，无需依赖外部服务
+- **MathJax**：作为备选的数学公式渲染引擎，提供更全面的兼容性
+
+### 流处理
+
+- **ReadableStream API**：处理流式数据传输
+- **TextEncoderStream**：文本流编码处理
+- **自定义流控制器**：实现AI回复的流式显示效果
+
+## 项目结构
+
+```
+src/
+├── assets/           # 静态资源文件
+├── components/       # 可复用组件
+│   └── ContentRenderer.vue  # 核心内容渲染组件
+├── router/           # 路由配置
+├── store/            # Vuex状态管理
+├── views/            # 页面视图
+│   ├── ContentView.vue  # 内容渲染页面
+│   └── ChatView.vue     # AI对话页面
+├── streamHandler.js  # 流处理工具
+├── App.vue           # 应用入口组件
+└── main.js           # 应用初始化
+```
+
+## 特色功能详解
+
+### 内容渲染器 (ContentRenderer)
+
+内容渲染器组件是系统的核心，它能够:
+
+- **自动识别和解析**各种格式标记
+- **优雅处理渲染错误**，确保页面不会因公式错误而崩溃
+- **自适应布局**，适合各种屏幕尺寸
+- **高性能渲染**，即使处理大型文档也能保持流畅
+
+### AI对话功能
+
+AI对话界面提供:
+
+- **双区域显示**：同时展示思考过程和最终回复
+- **公式编辑支持**：用户可以直接输入LaTeX公式
+- **自动滚动**：长对话自动滚动到最新消息
+- **状态指示**：清晰显示AI思考和回复状态
+
+## 使用指南
+
+### 环境要求
+
+- Node.js 12.0+
+- npm 6.0+
+
+### 安装步骤
+
+1. 克隆项目代码
+```
+git clone https://github.com/HT3301601278/content-rendering.git
+cd content-rendering
+```
+
+2. 安装依赖
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+3. 启动开发服务器
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+4. 在浏览器中访问
+```
+http://localhost:8080
+```
+
+### 生产环境部署
+
+构建生产版本:
 ```
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+构建完成后，静态文件将生成在`dist`目录中，可部署到任何Web服务器。
+
+## 内容格式规范
+
+系统使用JSON格式存储内容，格式示例:
+
+```json
+{
+  "title": "余弦函数",
+  "content": "# 余弦函数介绍\n\n余弦函数是一个基本的三角函数，定义为：\n\n$$\\cos(x) = \\frac{e^{ix} + e^{-ix}}{2}$$\n\n其中$i$是虚数单位。"
+}
+```
+
+## 自定义与扩展
+
+### 添加新内容文件
+
+1. 在`public/json/`目录下创建新的JSON文件
+2. 在`ContentView.vue`中的`availableFiles`数组中添加新文件信息
+3. 重启应用即可在下拉菜单中看到新添加的内容
+
+### 调整渲染样式
+
+可通过修改`ContentRenderer.vue`和`ChatView.vue`中的样式部分自定义内容渲染外观。
+
+## 注意事项
+
+- 内容文件必须使用UTF-8编码以确保特殊字符正确显示
+- 公式复杂度过高可能影响渲染性能，建议适当拆分复杂公式
+- AI对话功能需要有效的API密钥才能正常工作
