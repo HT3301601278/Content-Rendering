@@ -270,14 +270,13 @@ body {
   padding: 0;
   height: 100vh;
   background-color: #f5f7fa;
-  overflow: hidden;
 }
 
 /* 主容器样式 */
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 90vh;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
@@ -285,6 +284,7 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #333;
   position: relative;
+  overflow: hidden; /* 限制在容器内部滚动 */
 }
 
 /* 聊天消息区域 */
