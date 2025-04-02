@@ -53,6 +53,10 @@ export default {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  height: calc(100vh - 70px); /* 调整高度，考虑导航栏高度 */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 h1 {
@@ -89,5 +93,18 @@ select:focus {
   outline: none;
   border-color: #42b983;
   box-shadow: 0 0 0 2px rgba(66, 185, 131, 0.2);
+}
+
+::v-deep .content-renderer {
+  flex: 1;
+  overflow-y: auto;
+  margin: 0;
+  padding: 15px;
+}
+
+/* 隐藏内容渲染器的外边距，防止出现双重滚动条 */
+::v-deep .content-renderer > div {
+  margin: 0;
+  padding: 0;
 }
 </style> 

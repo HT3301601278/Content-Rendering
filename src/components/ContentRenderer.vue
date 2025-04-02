@@ -149,19 +149,20 @@ export default {
 
 <style>
 .content-renderer {
-  margin: 20px;
-  padding: 20px;
   border-radius: 8px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  max-height: calc(100vh - 200px);
   overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .rendered-content {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   text-align: left;
+  padding: 10px;
 }
 
 .rendered-content blockquote {

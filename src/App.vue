@@ -13,6 +13,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden; /* 阻止全局滚动条 */
 }
 
 #app {
@@ -21,6 +22,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   height: 100%;
+  overflow: hidden; /* 阻止app容器滚动条 */
 }
 
 .nav-menu {
