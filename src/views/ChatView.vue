@@ -268,7 +268,6 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
   height: 100vh;
   background-color: #f5f7fa;
 }
@@ -277,7 +276,7 @@ body {
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 90vh;
   max-width: 1000px;
   margin: 0 auto;
   padding: 2vh 20px;
@@ -285,7 +284,6 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #333;
   position: relative;
-  overflow: hidden;
 }
 
 /* 聊天消息区域 */
@@ -300,7 +298,7 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #cbd5e0 #f8fafc;
   transition: all 0.3s ease;
-  height: calc(96vh - 120px); /* 减去输入框和padding的高度 */
+  min-height: 0;
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -425,6 +423,7 @@ body {
 
 /* 输入区域样式 */
 .chat-input {
+  flex-shrink: 0;
   display: flex;
   gap: 12px;
   padding: 12px;
@@ -433,7 +432,7 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   position: relative;
   transition: all 0.3s ease;
-  height: 74px; /* 固定高度 */
+  height: 74px;
 }
 
 .chat-input:focus-within {
